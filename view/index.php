@@ -1,5 +1,6 @@
 <?php
 include('include/session.innit.php');
+include ('../controller/checkConnection.php');
 var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
