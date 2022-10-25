@@ -7,8 +7,8 @@
         // ini_set('display_startup_errors', 1);
         // error_reporting(E_ALL);
 
-    if($_SESSION['controller'] == false) {
-        header('location:../controller/route.php');
+    if($_SESSION['controller'] = false) {
+        header('location:../controller/Route.php');
     }
 
     $_SESSION['controller'] = true;

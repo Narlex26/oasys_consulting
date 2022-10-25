@@ -12,25 +12,25 @@
         if(isset($_GET['action'])) { // Vérification de la présence d'une action
             switch($_GET['action']) { // Vérification du type d'action
                 default: // Si aucune action valide -> index
-                    goto index;
+                    header ('Location: ../view/accueil.php');
                     break;
 
                 case "demander_connexion": // L'utilisateur demande la page de connexion
                     // On vérifie que l'utilisateur ne soit pas déjà connecté
-                    /*if ($_SESSION['auth_state']) {
-                        goto index;
+                    if ($_SESSION['auth_state'] = true) {
+                        header('location:../view/index.php');
                         break;
-                    }*/
-                    $_SESSION['auth_req'] = "login";
-                    header('location:../view/connexion.php');
+                    }
+                    $_SESSION['auth_state'] = false;
+                    header('location:../view/login.php');
                     break;
 
                 case "connexion": // L'utilisateur a cliqué sur "se connecter"
                     // On vérifie que l'utilisateur ne soit pas déjà connecté
-                    /*if ($_SESSION['auth_state']) {
-                        goto index;
+                    if ($_SESSION['auth_state'] = true) {
+                        header('location:../view/index.php');
                         break;
-                    }*/
+                    }
 
                     try {
                         $userSERVICE = new \model\service\userSERVICE();
@@ -41,12 +41,16 @@
                     }
 
                     $connuser = $userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']);
+                    break;
 
-                    var_dump($connuser);
+                case "logout":
+                    session_destroy();
+                    unset($_SESSION);
+
+                    header('location:../view/index.php');
 
             }
         } else { // Aucune action présente = index
-            index:
             $_SESSION['controller'] = true;
             header('location:../view/index.php');
             exit;
