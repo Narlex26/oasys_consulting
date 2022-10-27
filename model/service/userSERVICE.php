@@ -18,8 +18,7 @@ class userSERVICE {
     }
 
     public function connUser($adresse_mail_client,$password_client) { // Fonction pour vérifier l'existance d'un utilisateur dans la BDD (avec mail et id spotify)
-        $connUser = $this->userDAO->connUser($adresse_mail_client,$password_client);
-        return $connUser;
+        return $this->userDAO->connUser($adresse_mail_client,$password_client);
     }
 
 

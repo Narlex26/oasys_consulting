@@ -17,7 +17,7 @@
             }
         }
 
-        public function __destruct() { 
+        public function __destruct() {
         }
 
         public function checkUser($adresse_mail_client, $password_client) { // Vérifie la présence d'un utilisateur dans la BDD avec son mail et mot de passe
@@ -51,16 +51,13 @@
             return $res;
         }
 
-        public function connUser($adresse_mail_client,$password_client) { // Connecte un utilisateur
+        public function connUser($adresse_mail_client,$password_client)
+        { // Connecte un utilisateur
             $connUser = $this->Connection->prepare("SELECT * FROM `client` WHERE adresse_mail_client=? and password_client=? LIMIT 1");
-            $connUser->execute(array($adresse_mail_client,hash('sha256', $password_client)));
+            $connUser->execute(array($adresse_mail_client, hash('sha256', $password_client)));
             $res = $connUser->fetchAll();
 
-            if (empty($res)) {
-                return false;
-            } else {
-                return true;
-            }
+            return !empty($res);
         }
     }
 ?>

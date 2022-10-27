@@ -27,7 +27,7 @@
 
                 case "connexion": // L'utilisateur a cliqué sur "se connecter"
                     // On vérifie que l'utilisateur ne soit pas déjà connecté
-                    if ($_SESSION['auth_state']) {
+                    if ($_SESSION['auth_state'] == true) {
                         header('location:../view/index.php');
                         break;
                     }
@@ -40,17 +40,19 @@
                         die();
                     }
 
-                    $connuser = $userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']);
+                    $_SESSION['auth_state'] = $userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']);
+
+                    header('location:../view/index.php');
                     break;
 
                 case "logout":
                     session_destroy();
                     unset($_SESSION);
+                    header('location:../view/accueil.php');
             }
-        } else { // Aucune action présente = index
-            index:
+        } else { // Aucune action présente = accueil
             $_SESSION['controller'] = true;
-            header('location:../view/index.php');
+            header('location:../view/accueil.php');
             exit;
         }
 ?>
