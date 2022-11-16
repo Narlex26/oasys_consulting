@@ -14,27 +14,12 @@
 
         switch($action) { // Vérification du type d'action
             case "demander_connexion": // L'utilisateur demande la page de connexion
+            case "connexion":
                 $controllerName = \controller\LoginController::class;
                 break;
 
-            case "connexion": // L'utilisateur a cliqué sur "se connecter"
-                // On vérifie que l'utilisateur ne soit pas déjà connecté
-                if ($_SESSION['auth_state'] == true) {
-                    header('location:../assets/index.php');
-                    break;
-                }
-
-                try {
-                    $userSERVICE = new \model\service\userSERVICE();
-                }
-                catch(\Exception $e) {
-                    echo "erreur connexion";
-                    die();
-                }
-
-                $_SESSION['auth_state'] = $userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']);
-
-                header('location:../assets/index.php');
+            case "dashboard":
+                $controllerName = \controller\DashboardController::class;
                 break;
 
             case "logout":
@@ -46,7 +31,7 @@
             case "":
             default :
             $_SESSION['controller'] = true;
-            header('location:../assets/accueil.php');
+            header('location:../view/accueil.php');
             break;
         }
 
