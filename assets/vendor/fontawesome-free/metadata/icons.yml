@@ -1678,7 +1678,7 @@ binoculars:
       - magnify
       - scenic
       - spyglass
-      - view
+      - assets
   styles:
     - solid
   unicode: f1e5
@@ -13110,7 +13110,7 @@ mountain:
       - hill
       - landscape
       - travel
-      - view
+      - assets
   styles:
     - solid
   unicode: f6fc

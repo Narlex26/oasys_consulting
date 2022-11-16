@@ -1477,7 +1477,7 @@ maps:
     - shopping-cart
     - shower
     - snowplow
-    - street-view
+    - street-assets
     - subway
     - suitcase
     - tag
@@ -2438,7 +2438,7 @@ users-people:
     - skiing-nordic
     - smile
     - snowboarding
-    - street-view
+    - street-assets
     - swimmer
     - user
     - user-alt

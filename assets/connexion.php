@@ -1,9 +1,3 @@
-<?php
-include("include/session.innit.php");
-/*if ($_SESSION['auth_state'] != true) {
-    header('location:../controller/route.php');
-}*/
-?>
 <!doctype html>
 <html lang="en">
 <head>

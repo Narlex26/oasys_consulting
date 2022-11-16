@@ -53,7 +53,7 @@
 
         public function connUser($adresse_mail_client,$password_client)
         { // Connecte un utilisateur
-            $connUser = $this->Connection->prepare("SELECT * FROM `client` WHERE adresse_mail_client=? and password_client=? LIMIT 1");
+            $connUser = $this->Connection->prepare("SELECT * FROM `user` WHERE adresse_mail_client=? and password_client=? LIMIT 1");
             $connUser->execute(array($adresse_mail_client, hash('sha256', $password_client)));
             $res = $connUser->fetchAll();
 
