@@ -1,8 +1,3 @@
-<?php
-include('include/session.innit.php');
-include ('../controller/checkConnection.php');
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -56,26 +51,39 @@ include ('../controller/checkConnection.php');
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Créer un projet</h1>
 
-                    <form>
+                    <form class="projet" method="post" action="../controller/Route.php?action=create_project">
+
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Nom du projet</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Projet 1">
+                            <input name="nom_projet" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Projet 1">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Client lié au projet</label>
-                            <select class="form-control" id="exampleFormControlSelect1" href="">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
+
                         <div class="form-group">
                             <label for="exampleFormControlSelect2">Date de début du projet</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput1">
+                            <input name="date_debut_projet" type="date" class="form-control" id="exampleFormControlInput1">
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Client lié au projet</label>
+                            <select name="id_client" class="form-control" id="exampleFormControlSelect1" href="">
+                                <?php
+                                    foreach ($listClients as $clients) {
+                                        echo "<option value='".$clients['id_client']."'>".$clients['prenom_client']." ".$clients['nom_client']."</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Créer le projet</button>
+
                     </form>
+                    <br>
+                    <?php
+                    if ($res = true) {?>
+                        <div class="alert alert-success" role="alert">
+                            Votre projet a été créer!
+                        </div>
+                    <?php } ?>
 
                 </div>
                 <!-- /.container-fluid -->

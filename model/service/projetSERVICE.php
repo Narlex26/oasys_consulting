@@ -1,7 +1,7 @@
 <?php
 namespace model\service;
 
-class userSERVICE {
+class projetSERVICE {
     private $projetDAO;
 
     public function __construct() {
@@ -17,8 +17,8 @@ class userSERVICE {
 
     }
 
-    public function createProject($code_projet,$libelle_projet,$date_de_debut_projet,$date_de_fin_projet,$id_client) {
-        return $this->projetDAO->createProject($code_projet,$libelle_projet,$date_de_debut_projet,$date_de_fin_projet,$id_client);
+    public function createProject($libelle_projet,$date_de_debut_projet,$id_client) {
+        return $this->projetDAO->createProject($libelle_projet,$date_de_debut_projet,$id_client);
     }
 
 

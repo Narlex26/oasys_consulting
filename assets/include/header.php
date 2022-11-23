@@ -15,7 +15,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="../controller/Route.php?action=dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -38,8 +38,8 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion des clients :</h6>
-                    <a class="collapse-item" href="buttons.html">Liste des clients</a>
-                    <a class="collapse-item" href="cards.html">Créer des clients</a>
+                    <a class="collapse-item" href="../controller/Route.php?action=list_client">Liste des clients</a>
+                    <a class="collapse-item" href="../controller/Route.php?action=create_client">Créer des clients</a>
                 </div>
             </div>
         </li>
@@ -55,10 +55,10 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion des projets :</h6>
-                    <a class="collapse-item" href="utilities-color.html">Liste des projets</a>
-                    <a class="collapse-item" href="utilities-border.html">Projets en cours</a>
-                    <a class="collapse-item" href="utilities-animation.html">Projets finalisés</a>
-                    <a class="collapse-item" href="../../view/create_project.php">Créer des projets</a>
+                    <a class="collapse-item" href="#">Liste des projets</a>
+                    <a class="collapse-item" href="#">Projets en cours</a>
+                    <a class="collapse-item" href="#">Projets finalisés</a>
+                    <a class="collapse-item" href="../controller/Route.php?action=create_project">Créer des projets</a>
                 </div>
             </div>
         </li>

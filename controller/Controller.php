@@ -14,6 +14,10 @@ abstract class Controller
             $this->redirect("connexion");
         }
 
+        if (!isset($_SESSION['auth_state'])) {
+            $_SESSION['auth_state'] = false;
+        }
+
     }
 
     public final function redirect(string $action) {

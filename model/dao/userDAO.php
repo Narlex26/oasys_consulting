@@ -20,20 +20,6 @@ class userDAO {
     public function __destruct() {
     }
 
-    public function createUser($adresse_mail_user,$password_user,$nom_user,$prenom_user,$nom_entreprise_user) { // Crée un utilisateur
-        $createuser = $this->Connection->prepare("INSERT INTO ".self::TABLE." (adresse_mail_user,password_user,nom_user,prenom_user)
-            VALUES (:adresse_mail_user,:password_user,:nom_user,:prenom_user,:nom_entreprise_user)");
-        $res = $createuser->execute(array(
-            "adresse_mail_user"=>$adresse_mail_user,
-            "password_user"=>$password_user,
-            "nom_user"=>$nom_user,
-            "prenom_user"=>$prenom_user,
-            "nom_entreprise_user"=>$nom_entreprise_user
-        ));
-
-        return $res;
-    }
-
     public function connUser($adresse_mail_user,$password_user)
     { // Connecte un utilisateur
         $connUser = $this->Connection->prepare("SELECT * FROM `user` WHERE adresse_mail_user=? and password_user=? LIMIT 1");

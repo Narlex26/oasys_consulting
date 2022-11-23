@@ -22,13 +22,24 @@
                 $controllerName = \controller\DashboardController::class;
                 break;
 
+            case "create_project":
+                $controllerName = \controller\Create_projectController::class;
+                break;
+
+            case "create_client":
+                $controllerName = \controller\Create_clientController::class;
+                break;
+
+            case "list_client":
+                $controllerName = \controller\List_clientController::class;
+                break;
+
             case "logout":
                 session_destroy();
                 unset($_SESSION);
-                header('location:../assets/accueil.php');
+                header('location:../view/accueil.php');
                 break;
 
-            case "":
             default :
             $_SESSION['controller'] = true;
             header('location:../view/accueil.php');
