@@ -54,7 +54,11 @@ var_dump($_SESSION);
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard <?php echo($maVariable) ?></h1>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard de
+                            <?php
+                                echo $_SESSION["prenom"]." ".$_SESSION["nom"];
+                            ?>
+                        </h1>
                     </div>
 
                     <!-- Content Row -->

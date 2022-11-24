@@ -1,5 +1,7 @@
 <?php
 namespace model\dao;
+use model\metier\userMETIER;
+
 date_default_timezone_set('Europe/Paris');
 
 class userDAO {
@@ -24,9 +26,7 @@ class userDAO {
     { // Connecte un utilisateur
         $connUser = $this->Connection->prepare("SELECT * FROM `user` WHERE adresse_mail_user=? and password_user=? LIMIT 1");
         $connUser->execute(array($adresse_mail_user, hash('sha256', $password_user)));
-        $res = $connUser->fetchAll();
-
-        return !empty($res);
+        return userMETIER::fromFetchData($connUser->fetch());
     }
 }
 ?>

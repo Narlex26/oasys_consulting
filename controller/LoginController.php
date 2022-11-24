@@ -2,6 +2,8 @@
 
 namespace controller;
 
+use model\metier\userMETIER;
+
 class LoginController extends Controller
 {
     public $needAuth = false;
@@ -26,12 +28,22 @@ class LoginController extends Controller
                 die();
             }
 
-            $_SESSION['auth_state'] = $userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']);
+            $this->initSessionVars($userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']));
+
             $this->redirect("dashboard");
         }else{
-            $_SESSION['auth_state'] = false;
+            $this->initSessionVars();
             $this->render("login");
         }
     }
 
+    public function initSessionVars(userMETIER $user = null) {
+        $_SESSION['auth_state'] = $user != null;
+        if($user != null)
+        {
+            $_SESSION['email'] = $user->getAdresse_mail_user();
+            $_SESSION['nom'] = $user->getNom_user();
+            $_SESSION['prenom'] = $user->getPrenom_user();
+        }
+    }
 }

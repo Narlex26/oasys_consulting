@@ -79,7 +79,7 @@
                     </form>
                     <br>
                     <?php
-                    if ($res = true) {?>
+                    if ($resultNotification) {?>
                         <div class="alert alert-success" role="alert">
                             Votre projet a été créer!
                         </div>

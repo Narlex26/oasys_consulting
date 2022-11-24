@@ -7,7 +7,8 @@ abstract class Controller
 {
     public $needAuth = true;
 
-    public function resolve () {}
+    public function resolve () {
+    }
 
     public function guard () {
         if ($this->needAuth && $_SESSION['auth_state'] !== true) {
@@ -25,12 +26,23 @@ abstract class Controller
         die();
     }
 
+    private function commonVariables(): array
+    {
+        return [
+            "email" => $_SESSION['email'],
+            "nom" => $_SESSION['nom'],
+            "prenom" => $_SESSION['prenom'],
+        ];
+    }
+
     public final function render(string $view, array $vars = [], bool $print = true)
     {
         $viewPath = "../view/$view.php";
         $output = NULL;
+        $allVars = array_merge($this->commonVariables(), $vars);
+
         if(file_exists($viewPath)){
-            extract($vars);
+            extract($allVars);
 
             ob_start();
             include $viewPath;

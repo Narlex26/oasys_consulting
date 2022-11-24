@@ -8,8 +8,9 @@ class Create_projectController extends Controller
     {
         $clientSERVICE = new \model\service\clientSERVICE();
 
-        $listClients = [
-            "listClients" => $clientSERVICE->getClient()
+        $vars = [
+            "listClients" => $clientSERVICE->getClient(),
+            "resultNotification" => false
         ];
 
 
@@ -22,12 +23,12 @@ class Create_projectController extends Controller
                 die();
             }
 
-            $project_creation = $projetSERVICE->createProject($_POST['nom_projet'],$_POST['date_debut_projet'],$_POST['id_client']);
+            $vars["resultNotification"]  = $projetSERVICE->createProject($_POST['nom_projet'],$_POST['date_debut_projet'],$_POST['id_client']);
 
-            $this->render("create_project", $listClients, $project_creation);
+            $this->render("create_project", $vars);
             $this->redirect("create_project");
         }else{
-            $this->render("create_project", $listClients);
+            $this->render("create_project", $vars);
         }
 
     }
