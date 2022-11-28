@@ -13,8 +13,7 @@ class Create_projectController extends Controller
             "resultNotification" => false
         ];
 
-
-        if(isset($_POST['nom_projet']) and isset($_POST['date_debut_projet']) and isset($_POST['id_client']))  {
+        if(isset($_POST['nom_projet']) && isset($_POST['date_debut_projet']) && isset($_POST['id_client']))  {
             try {
                 $projetSERVICE = new \model\service\projetSERVICE();
             }

@@ -55,9 +55,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Gestion des projets :</h6>
-                    <a class="collapse-item" href="#">Liste des projets</a>
-                    <a class="collapse-item" href="#">Projets en cours</a>
-                    <a class="collapse-item" href="#">Projets finalisés</a>
+                    <a class="collapse-item" href="../controller/Route.php?action=list_project">Liste des projets</a>
+                    <a class="collapse-item" href="../controller/Route.php?action=list_current_project">Projets en cours</a>
+                    <a class="collapse-item" href="../controller/Route.php?action=list_finish_project">Projets finalisés</a>
                     <a class="collapse-item" href="../controller/Route.php?action=create_project">Créer des projets</a>
                 </div>
             </div>

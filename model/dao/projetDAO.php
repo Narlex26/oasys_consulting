@@ -1,5 +1,8 @@
 <?php
 namespace model\dao;
+use model\metier\clientMETIER;
+use model\metier\projetMETIER;
+
 date_default_timezone_set('Europe/Paris');
 
 class projetDAO
@@ -32,6 +35,27 @@ class projetDAO
         ));
 
         return $res;
+    }
+
+    public function getProject() // Cherche tous les clients pour les afficher lors d'une crétion de projet
+    {
+        $getProject = $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, client.nom_client, client.prenom_client FROM projet, client WHERE projet.id_client = client.id_client");
+        $getProject->execute();
+        return projetMETIER::fromFetchAllData($getProject->fetchAll());
+    }
+
+    public function getCurrentProject()
+    {
+       $getCurrentProject =  $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, client.nom_client, client.prenom_client FROM projet, client WHERE projet.id_client = client.id_client AND date_de_fin_projet IS NULL");
+       $getCurrentProject->execute();
+        return projetMETIER::fromFetchAllData($getCurrentProject->fetchAll());
+    }
+
+    public function getFinishProject()
+    {
+        $getFinishProject =  $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, client.nom_client, client.prenom_client FROM projet, client WHERE projet.id_client = client.id_client AND date_de_fin_projet IS NOT NULL");
+        $getFinishProject->execute();
+        return projetMETIER::fromFetchAllData($getFinishProject->fetchAll());
     }
 }
 ?>

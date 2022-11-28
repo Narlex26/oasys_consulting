@@ -30,6 +30,18 @@
                 $controllerName = \controller\Create_clientController::class;
                 break;
 
+            case "list_project":
+                $controllerName = \controller\List_projectController::class;
+                break;
+
+            case "list_current_project":
+                $controllerName = \controller\List_current_projectController::class;
+                break;
+
+            case "list_finish_project":
+                $controllerName = \controller\List_finish_projectController::class;
+                break;
+
             case "list_client":
                 $controllerName = \controller\List_clientController::class;
                 break;

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Liste des clients</title>
+    <title>Liste des projets en cours</title>
 
     <!-- Custom fonts for this template-->
     <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -49,27 +49,27 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Liste des clients</h1>
+                <h1 class="h3 mb-4 text-gray-800">Liste des projets en cours</h1>
 
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Adresse e-mail</th>
-                            <th scope="col">Prénom</th>
-                            <th scope="col">Nom de famille</th>
-                            <th scope="col">Entreprise</th>
+                            <th scope="col">Nom du projet</th>
+                            <th scope="col">Date de début</th>
+                            <th scope="col">Date de fin</th>
+                            <th scope="col">Client</th>
                         </tr>
                     </thead>
                     <tbody>
                             <?php
-                            foreach($listClients as $client) {
+                            foreach($listCurrentProjects as $currentproject) {
                                 echo "<tr>";
-                                    echo "<th scope='row'>".$client->getId_client()."</th>";
-                                    echo "<td>".$client->getAdresse_mail_client()."</td>";
-                                    echo "<td>".$client->getNom_client()."</td>";
-                                    echo "<td>".$client->getPrenom_client()."</td>";
-                                    echo "<td>".$client->getNom_entreprise_client()."</td>";
+                                    echo "<th scope='row'>".$currentproject->getCode_projet()."</th>";
+                                    echo "<td>".$currentproject->getLibelle_projet()."</td>";
+                                    echo "<td>".$currentproject->getDate_de_debut_projet()."</td>";
+                                    echo "<td>".$currentproject->getDate_de_fin_projet()."</td>";
+                                    echo "<td>".$currentproject->getPrenom_client()." ".$currentproject->getNom_client()."</td>";
                                 echo "</tr>";
                             }
                             ?>

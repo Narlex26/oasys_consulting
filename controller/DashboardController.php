@@ -6,9 +6,6 @@ class DashboardController extends Controller
 {
     public function resolve()
     {
-        $vars = [
-            "maVariable" => "Admin"
-        ];
-        $this->render("dashboard", $vars);
+        $this->render("dashboard");
     }
 }

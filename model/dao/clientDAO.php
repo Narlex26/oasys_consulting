@@ -1,5 +1,7 @@
 <?php
 namespace model\dao;
+use model\metier\clientMetier;
+
 date_default_timezone_set('Europe/Paris');
 
 class clientDAO {
@@ -37,7 +39,7 @@ class clientDAO {
     {
         $getClient = $this->Connection->prepare("SELECT * FROM `client`");
         $getClient->execute();
-        return $getClient->fetchAll();
+        return clientMETIER::fromFetchAllData($getClient->fetchAll());
     }
 }
 ?>

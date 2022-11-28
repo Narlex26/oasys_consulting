@@ -28,16 +28,16 @@ class LoginController extends Controller
                 die();
             }
 
-            $this->initSessionVars($userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']));
+            $this->initSessionUserVars($userSERVICE->connUser($_POST['adresse_mail_client'],$_POST['password_client']));
 
             $this->redirect("dashboard");
         }else{
-            $this->initSessionVars();
+            $this->initSessionUserVars();
             $this->render("login");
         }
     }
 
-    public function initSessionVars(userMETIER $user = null) {
+    public function initSessionUserVars(userMETIER $user = null) {
         $_SESSION['auth_state'] = $user != null;
         if($user != null)
         {

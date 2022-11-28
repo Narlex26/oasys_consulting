@@ -67,8 +67,8 @@
                             <label for="exampleFormControlSelect1">Client lié au projet</label>
                             <select name="id_client" class="form-control" id="exampleFormControlSelect1" href="">
                                 <?php
-                                    foreach ($listClients as $clients) {
-                                        echo "<option value='".$clients['id_client']."'>".$clients['prenom_client']." ".$clients['nom_client']."</option>";
+                                    foreach($listClients as $client) {
+                                        echo "<option value='".$client->getId_client()."'>".$client->getPrenom_client()." ".$client->getNom_client()."</option>";
                                     }
                                 ?>
                             </select>
