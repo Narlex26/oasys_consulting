@@ -49,7 +49,7 @@
             case "logout":
                 session_destroy();
                 unset($_SESSION);
-                header('location:../view/accueil.php');
+                $controllerName = \controller\AccueilController::class;
                 break;
 
             default :

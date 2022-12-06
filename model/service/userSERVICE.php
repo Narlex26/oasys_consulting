@@ -21,5 +21,9 @@ class userSERVICE {
         return $this->userDAO->connUser($adresse_mail_client,$password_client);
     }
 
+    public function getUser() { // Fonction pour aller chercher tous les users dans la BDD
+        return $this->userDAO->getUser();
+    }
+
 
 }

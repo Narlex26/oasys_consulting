@@ -25,5 +25,9 @@ class clientSERVICE {
         return $this->clientDAO->createClient($adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client);
     }
 
+    public function getNumbersOfClient() { // Affiche le nombre de client total
+        return $this->clientDAO->getNumbersOfClient();
+    }
+
 
 }

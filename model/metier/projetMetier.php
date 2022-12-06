@@ -8,6 +8,9 @@ class projetMETIER {
     private $date_de_fin_projet;
     private $prenom_client;
     private $nom_client;
+    private $prenom_gestionnaire_projet;
+    private $nom_gestionnaire_projet;
+    private $nombre_projet;
 
     // Setters
     public function setCode_projet($code_projet) : void {
@@ -27,6 +30,15 @@ class projetMETIER {
     }
     public function setNom_client($nom_client) : void {
         $this->nom_client = $nom_client;
+    }
+    public function setPrenom_gestionnaire_projet($prenom_gestionnaire_projet) : void {
+        $this->prenom_gestionnaire_projet = $prenom_gestionnaire_projet;
+    }
+    public function setNom_gestionnaire_projet($nom_gestionnaire_projet) : void {
+        $this->nom_gestionnaire_projet = $nom_gestionnaire_projet;
+    }
+    public function setNombre_projet($nombre_projet) : void {
+        $this->nombre_projet = $nombre_projet;
     }
 
     // Getters
@@ -48,6 +60,15 @@ class projetMETIER {
     public function getNom_client() {
         return $this->nom_client;
     }
+    public function getPrenom_gestionnaire_projet() {
+        return $this->prenom_gestionnaire_projet;
+    }
+    public function getNom_gestionnaire_projet() {
+        return $this->nom_gestionnaire_projet;
+    }
+    public function getNombre_projet() {
+        return $this->nombre_projet;
+    }
 
     public static function fromFetchData ($data) : projetMETIER {
         $project = new projetMETIER();
@@ -57,6 +78,8 @@ class projetMETIER {
         $project->setDate_de_fin_projet($data["date_de_fin_projet"]);
         $project->setPrenom_client($data["prenom_client"]);
         $project->setNom_client($data["nom_client"]);
+        $project->setPrenom_gestionnaire_projet($data["prenom_user"]);
+        $project->setNom_gestionnaire_projet($data["nom_user"]);
 
         return $project;
     }

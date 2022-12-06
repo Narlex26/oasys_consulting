@@ -7,12 +7,6 @@ class clientMETIER {
     private $prenom_client;
     private $nom_entreprise_client;
 
-    public function __construct() {
-    }
-
-    public function __destruct() {
-    }
-
     // Setters
     public function setId_client($id_client) : void {
         $this->id_client = $id_client;

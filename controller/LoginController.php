@@ -41,9 +41,12 @@ class LoginController extends Controller
         $_SESSION['auth_state'] = $user != null;
         if($user != null)
         {
+            $_SESSION['id'] = $user->getId_user();
             $_SESSION['email'] = $user->getAdresse_mail_user();
             $_SESSION['nom'] = $user->getNom_user();
             $_SESSION['prenom'] = $user->getPrenom_user();
+            $_SESSION['type'] = $user->getRole_user();
+
         }
     }
 }

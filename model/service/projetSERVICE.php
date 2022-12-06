@@ -17,8 +17,8 @@ class projetSERVICE {
 
     }
 
-    public function createProject($libelle_projet,$date_de_debut_projet,$id_client) {
-        return $this->projetDAO->createProject($libelle_projet,$date_de_debut_projet,$id_client);
+    public function createProject($libelle_projet,$date_de_debut_projet,$id_client,$id_user) {
+        return $this->projetDAO->createProject($libelle_projet,$date_de_debut_projet,$id_client,$id_user);
     }
 
     public function getProject() { // Fonction pour aller chercher tous les clients dans la BDD
@@ -31,6 +31,14 @@ class projetSERVICE {
 
     public function getFinishProject() {
         return $this->projetDAO->getFinishProject();
+    }
+
+    public function getNumbersOfProject() {
+        return $this->projetDAO->getNumbersOfProject();
+    }
+
+    public function getPercentageOfFinishProject() {
+        return $this->projetDAO->getPercentageOfFinishProject();
     }
 
 

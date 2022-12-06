@@ -74,6 +74,17 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Utilisateur lié au projet</label>
+                            <select name="id_user" class="form-control" id="exampleFormControlSelect1" href="">
+                                <?php
+                                foreach($listUsers as $user) {
+                                    echo "<option value='".$user->getId_user()."'>".$user->getPrenom_user()." ".$user->getNom_user()."</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn btn-success">Créer le projet</button>
 
                     </form>

@@ -41,5 +41,12 @@ class clientDAO {
         $getClient->execute();
         return clientMETIER::fromFetchAllData($getClient->fetchAll());
     }
+
+    public function getNumbersOfClient() // Affiche le nombre de client total
+    {
+        $getNumbersOfClient = $this->Connection->prepare("SELECT COUNT(*) FROM client");
+        $getNumbersOfClient->execute();
+        return $getNumbersOfClient->fetch();
+    }
 }
 ?>

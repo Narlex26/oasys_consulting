@@ -59,6 +59,7 @@
                             <th scope="col">Date de début</th>
                             <th scope="col">Date de fin</th>
                             <th scope="col">Client</th>
+                            <th scope="col">En charge du projet</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,6 +71,7 @@
                                     echo "<td>".$project->getDate_de_debut_projet()."</td>";
                                     echo "<td>".$project->getDate_de_fin_projet()."</td>";
                                     echo "<td>".$project->getPrenom_client()." ".$project->getNom_client()."</td>";
+                                    echo "<td>".$project->getPrenom_gestionnaire_projet()." ".$project->getNom_gestionnaire_projet()."</td>";
                                 echo "</tr>";
                             }
                             ?>

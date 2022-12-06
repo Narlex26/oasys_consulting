@@ -15,6 +15,7 @@ abstract class Controller
             $this->redirect("connexion");
         }
 
+
         if (!isset($_SESSION['auth_state'])) {
             $_SESSION['auth_state'] = false;
         }
@@ -29,9 +30,11 @@ abstract class Controller
     private function commonVariables(): array
     {
         return [
+            "id" => $_SESSION['id'],
             "email" => $_SESSION['email'],
             "nom" => $_SESSION['nom'],
             "prenom" => $_SESSION['prenom'],
+            "type" => $_SESSION['type'],
         ];
     }
 
