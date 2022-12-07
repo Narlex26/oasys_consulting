@@ -37,9 +37,20 @@ class projetSERVICE {
         return $this->projetDAO->getNumbersOfProject();
     }
 
+    public function getNumbersOfCurrentProject() {
+        return $this->projetDAO->getNumbersOfCurrentProject();
+    }
+
+    public function getNumbersOfFinishProject() {
+        return $this->projetDAO->getNumbersOfFinishProject();
+    }
+
+    public function getPercentageOfCurrentProject() {
+        return $this->projetDAO->getPercentageOfCurrentProject();
+    }
+
     public function getPercentageOfFinishProject() {
         return $this->projetDAO->getPercentageOfFinishProject();
     }
-
 
 }

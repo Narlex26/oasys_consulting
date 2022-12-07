@@ -69,6 +69,30 @@ class projetDAO
         return $getNumbersOfProject->fetch();
     }
 
+    public function getNumbersOfCurrentProject() // Affiche le pourcentage de projet fini
+    {
+        $getNumbersOfCurrentProject = $this->Connection->prepare("SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NULL");
+        $getNumbersOfCurrentProject->execute();
+        $getNumbersOfCurrentProject = $getNumbersOfCurrentProject->fetch();
+        return (int) $getNumbersOfCurrentProject[0];
+    }
+
+    public function getNumbersOfFinishProject() // Affiche le pourcentage de projet fini
+    {
+        $getNumbersOfFinishProject = $this->Connection->prepare("SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NOT NULL");
+        $getNumbersOfFinishProject->execute();
+        $getNumbersOfFinishProject = $getNumbersOfFinishProject->fetch();
+        return (int) $getNumbersOfFinishProject[0];
+    }
+
+    public function getPercentageOfCurrentProject() // Affiche le pourcentage de projet fini
+    {
+        $getPercentageOfCurrentProject = $this->Connection->prepare("SELECT (SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NULL) * 100 / (SELECT COUNT(*) FROM projet)");
+        $getPercentageOfCurrentProject->execute();
+        $getPercentageOfCurrentProject = $getPercentageOfCurrentProject->fetch();
+        return (int) $getPercentageOfCurrentProject[0];
+    }
+
     public function getPercentageOfFinishProject() // Affiche le pourcentage de projet fini
     {
         $getPercentageOfFinishProject = $this->Connection->prepare("SELECT (SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NOT NULL) * 100 / (SELECT COUNT(*) FROM projet)");

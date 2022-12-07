@@ -29,13 +29,14 @@ abstract class Controller
 
     private function commonVariables(): array
     {
-        return [
+        return isset($_SESSION['id']) ?
+            [
             "id" => $_SESSION['id'],
             "email" => $_SESSION['email'],
             "nom" => $_SESSION['nom'],
             "prenom" => $_SESSION['prenom'],
             "type" => $_SESSION['type'],
-        ];
+            ] : [];
     }
 
     public final function render(string $view, array $vars = [], bool $print = true)

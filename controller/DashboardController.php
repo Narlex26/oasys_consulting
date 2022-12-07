@@ -11,6 +11,8 @@ class DashboardController extends Controller
 
         $vars = [
             "nombreProjets" => $projetSERVICE->getNumbersOfProject(),
+            "nombreProjetsFini" => $projetSERVICE->getNumbersOfFinishProject(),
+            "nombreProjetsEnCours" => $projetSERVICE->getNumbersOfCurrentProject(),
             "nombreClients" => $clientSERVICE->getNumbersOfClient(),
             "pourcentageProjetFini" => $projetSERVICE->getPercentageOfFinishProject(),
         ];

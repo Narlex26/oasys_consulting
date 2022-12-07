@@ -13,10 +13,6 @@ class userSERVICE {
         }
     }
 
-    public function __destruct() {
-
-    }
-
     public function connUser($adresse_mail_client,$password_client) { // Fonction pour vérifier l'existance d'un utilisateur dans la BDD (avec mail et id spotify)
         return $this->userDAO->connUser($adresse_mail_client,$password_client);
     }

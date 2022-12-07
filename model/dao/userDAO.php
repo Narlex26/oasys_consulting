@@ -20,13 +20,13 @@ class userDAO {
         }
     }
 
-    public function __destruct() {
-    }
-
     public function connUser($adresse_mail_user,$password_user)
     { // Connecte un utilisateur
-        $connUser = $this->Connection->prepare("SELECT * FROM `user` WHERE adresse_mail_user=? and password_user=? LIMIT 1");
-        $connUser->execute(array($adresse_mail_user, hash('sha256', $password_user)));
+        $connUser = $this->Connection->prepare("SELECT * FROM `user` WHERE :adresse_mail_user = user.adresse_mail_user and :password_user = user.password_user LIMIT 1");
+        $connUser->execute(array(
+            ':adresse_mail_user' => $adresse_mail_user,
+            ':password_user' => hash('sha256', $password_user)
+        ));
         return userMETIER::fromFetchData($connUser->fetch());
     }
 

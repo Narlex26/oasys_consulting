@@ -38,15 +38,16 @@ class LoginController extends Controller
     }
 
     public function initSessionUserVars(userMETIER $user = null) {
-        $_SESSION['auth_state'] = $user != null;
-        if($user != null)
+        $is_auth = $user != null && $user->getId_user() > 0;
+        $_SESSION['auth_state'] = $is_auth;
+
+        if($is_auth)
         {
             $_SESSION['id'] = $user->getId_user();
             $_SESSION['email'] = $user->getAdresse_mail_user();
             $_SESSION['nom'] = $user->getNom_user();
             $_SESSION['prenom'] = $user->getPrenom_user();
             $_SESSION['type'] = $user->getRole_user();
-
         }
     }
 }
