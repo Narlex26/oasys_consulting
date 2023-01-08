@@ -375,7 +375,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
 }
 
 h4, .h4 {
@@ -4529,7 +4529,7 @@ input[type="button"].btn-block {
 }
 
 .card-title {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .card-subtitle {
@@ -4558,7 +4558,7 @@ input[type="button"].btn-block {
 
 .card-header:first-child {
   border-radius: calc(0.35rem - 1px) calc(0.35rem - 1px) 0 0;
-}
+.}
 
 .card-footer {
   padding: 0.75rem 1.25rem;
@@ -11279,3 +11279,18 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+.mb-1, .my-1 {
+  margin-bottom: 0.3125rem !important;
+}
+
+.info-block {
+  padding: 18px 18px 16px;
+  background-color: #f8f8f8;
+  border-radius: 1em;
+}
+
+#etapes_projet {
+  margin-top: 2rem;
+}
+

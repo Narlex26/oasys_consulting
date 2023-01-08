@@ -13,16 +13,16 @@ class projetSERVICE {
         }
     }
 
-    public function __destruct() {
-
-    }
-
     public function createProject($libelle_projet,$date_de_debut_projet,$id_client,$id_user) {
         return $this->projetDAO->createProject($libelle_projet,$date_de_debut_projet,$id_client,$id_user);
     }
 
     public function getProject() { // Fonction pour aller chercher tous les clients dans la BDD
         return $this->projetDAO->getProject();
+    }
+
+    public function getProjectById() { // Fonction pour aller chercher tous les clients dans la BDD
+        return $this->projetDAO->getProjectById();
     }
 
     public function getCurrentProject() {

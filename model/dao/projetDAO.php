@@ -20,10 +20,6 @@ class projetDAO
         }
     }
 
-    public function __destruct()
-    {
-    }
-
     public function createProject($libelle_projet,$date_de_debut_projet,$id_client,$id_user)
     { // Créer un projet
         $createproject = $this->Connection->prepare("INSERT INTO " . self::TABLE . " (libelle_projet,date_de_debut_projet,id_client,id_user)
@@ -38,12 +34,20 @@ class projetDAO
         return $res;
     }
 
-    public function getProject() // Cherche tous les clients pour les afficher lors d'une crétion de projet
+    public function getProject() // Cherche tous les projet pour les afficher
     {
-        $getProject = $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.id_user = :id_user");
+        $getProject = $this->Connection->prepare("SELECT projet.code_projet, projet.libelle_projet, projet.date_de_debut_projet, projet.date_de_fin_projet, projet.id_client, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.id_user = :id_user");
         $getProject->bindParam(':id_user', $_SESSION['id']);
         $getProject->execute();
         return projetMETIER::fromFetchAllData($getProject->fetchAll());
+    }
+
+    public function getProjectById() // Cherche le projet choisi a afficher
+    {
+        $getProjectById = $this->Connection->prepare("SELECT projet.code_projet, projet.libelle_projet, projet.date_de_debut_projet, projet.date_de_fin_projet, projet.id_client, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.code_projet = :id_projet");
+        $getProjectById->bindParam(':id_projet', $_GET['project_number']);
+        $getProjectById->execute();
+        return projetMETIER::fromFetchAllData($getProjectById->fetchAll());
     }
 
     public function getCurrentProject()
@@ -69,7 +73,7 @@ class projetDAO
         return $getNumbersOfProject->fetch();
     }
 
-    public function getNumbersOfCurrentProject() // Affiche le pourcentage de projet fini
+    public function getNumbersOfCurrentProject() // Affiche le nombre de projet en cours
     {
         $getNumbersOfCurrentProject = $this->Connection->prepare("SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NULL");
         $getNumbersOfCurrentProject->execute();
@@ -77,7 +81,7 @@ class projetDAO
         return (int) $getNumbersOfCurrentProject[0];
     }
 
-    public function getNumbersOfFinishProject() // Affiche le pourcentage de projet fini
+    public function getNumbersOfFinishProject() // Affiche le nombre de projet fini
     {
         $getNumbersOfFinishProject = $this->Connection->prepare("SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NOT NULL");
         $getNumbersOfFinishProject->execute();
@@ -85,7 +89,7 @@ class projetDAO
         return (int) $getNumbersOfFinishProject[0];
     }
 
-    public function getPercentageOfCurrentProject() // Affiche le pourcentage de projet fini
+    public function getPercentageOfCurrentProject() // Affiche le pourcentage de projet en cours
     {
         $getPercentageOfCurrentProject = $this->Connection->prepare("SELECT (SELECT COUNT(*) FROM projet WHERE date_de_fin_projet IS NULL) * 100 / (SELECT COUNT(*) FROM projet)");
         $getPercentageOfCurrentProject->execute();

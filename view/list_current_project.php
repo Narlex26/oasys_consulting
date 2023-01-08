@@ -18,6 +18,7 @@
             rel="stylesheet">
 
         <!-- Custom styles for this template-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
     </head>
@@ -63,18 +64,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                                <?php
-                                foreach($listCurrentProjects as $currentproject) {
-                                    echo "<tr>";
-                                        echo "<th scope='row'>".$currentproject->getCode_projet()."</th>";
-                                        echo "<td>".$currentproject->getLibelle_projet()."</td>";
-                                        echo "<td>".$currentproject->getDate_de_debut_projet()."</td>";
-                                        echo "<td>".$currentproject->getDate_de_fin_projet()."</td>";
-                                        echo "<td>".$currentproject->getPrenom_client()." ".$currentproject->getNom_client()."</td>";
-                                        echo "<td>".$currentproject->getPrenom_gestionnaire_projet()." ".$currentproject->getNom_gestionnaire_projet()."</td>";
-                                    echo "</tr>";
-                                }
-                                ?>
+                            <?php
+                            foreach($listCurrentProjects as $currentproject) {
+                                echo "<tr>";
+                                    echo "<th scope='row'>".$currentproject->getCode_projet()."</th>";
+                                    echo "<td>".$currentproject->getLibelle_projet()."</td>";
+                                    echo "<td>".$currentproject->getDate_de_debut_projet()."</td>";
+                                    echo "<td>".$currentproject->getDate_de_fin_projet()."</td>";
+                                    echo "<td>".$currentproject->getPrenom_client()." ".$currentproject->getNom_client()."</td>";
+                                    echo "<td>".$currentproject->getPrenom_gestionnaire_projet()." ".$currentproject->getNom_gestionnaire_projet()."</td>";
+                                echo "</tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
 

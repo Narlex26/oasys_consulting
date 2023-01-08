@@ -42,6 +42,14 @@ class clientDAO {
         return clientMETIER::fromFetchAllData($getClient->fetchAll());
     }
 
+    public function getClientByProjectId()
+    {
+        $getClientByProjectId = $this->Connection->prepare("SELECT client.id_client, client.adresse_mail_client, client.nom_client, client.prenom_client, client.nom_entreprise_client FROM projet, client WHERE projet.id_client = client.id_client AND projet.code_projet = :id_projet");
+        $getClientByProjectId->bindParam(':id_projet', $_GET['project_number']);
+        $getClientByProjectId->execute();
+        return clientMETIER::fromFetchAllData($getClientByProjectId->fetchAll());
+    }
+
     public function getNumbersOfClient() // Affiche le nombre de client total
     {
         $getNumbersOfClient = $this->Connection->prepare("SELECT COUNT(*) FROM client");

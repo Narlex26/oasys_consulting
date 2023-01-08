@@ -21,6 +21,10 @@ class clientSERVICE {
         return $this->clientDAO->getClient();
     }
 
+    public function getClientByProjectId() { // Fonction pour aller chercher tous les clients dans la BDD
+        return $this->clientDAO->getClientByProjectId();
+    }
+
     public function createClient($adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client) { // Fonction pour aller créer un client
         return $this->clientDAO->createClient($adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client);
     }

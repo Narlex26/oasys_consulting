@@ -1,16 +1,14 @@
 <?php
+
 namespace model\metier;
 
-class projetMETIER {
-    private $code_projet;
-    private $libelle_projet;
-    private $date_de_debut_projet;
-    private $date_de_fin_projet;
-    private $id_client;
-    private $prenom_client;
-    private $nom_client;
-    private $prenom_gestionnaire_projet;
-    private $nom_gestionnaire_projet;
+class etapes_projetMetier
+{
+    private $id_historique_etape_projet;
+    private $id_etape_projet;
+    private $commentaire_etape_projet;
+    private $date_etape_projet;
+    private $id_user;
 
     // Setters
     public function setCode_projet($code_projet) : void {
@@ -98,4 +96,3 @@ class projetMETIER {
         return $tab_project;
     }
 }
-?>
