@@ -190,12 +190,14 @@
 
                                                         <form class="etapes_projet" method="post" action="../controller/Route.php?action=create_project_stage">
 
+                                                            <input type="hidden" name="project_number" value="<?php foreach($infosProjects as $infoProject) { echo $infoProject->getCode_projet(); }?>">
+
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput1">Etapes du projet</label>
                                                                 <select name="id_etape_projet" class="form-control" id="exampleFormControlSelect1" href="">
                                                                     <?php
-                                                                    foreach($listUsers as $user) {
-                                                                        echo "<option value='".$user->getId_user()."'>".$user->getPrenom_user()." ".$user->getNom_user()."</option>";
+                                                                    foreach($listProjectStage as $projectStage) {
+                                                                        echo "<option value='".$projectStage->getId_etape_projet()."'>".$projectStage->getLibelle_etape_projet()."</option>";
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -227,33 +229,28 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mt-3">
-                                        <div id="preciseClientInfo" class="col-xxl-6">
-                                            <p class="mb-1">
-                                                <strong>Nom entreprise</strong>
-                                            </p>
-                                            <p>
-                                                <?php
-                                                foreach($infosClients as $infosClient) {
-                                                    echo $infosClient->getNom_entreprise_client();
-                                                }?>
-                                            </p>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Libelle</th>
+                                            <th scope="col">Commentaire</th>
+                                            <th scope="col">Date d'ajout</th>
+                                            <th scope="col">En charge de l'étape</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        foreach($listProjectStageHistory as $projectStageHistory) {
+                                            echo "<tr>";
+                                                echo "<td>".$projectStageHistory->getLibelle_etape_projet()."</td>";
+                                                echo "<td>".$projectStageHistory->getCommentaire_etape_projet()."</td>";
+                                                echo "<td>".$projectStageHistory->getDate_etape_projet()."</td>";
+                                                echo "<td>".$projectStageHistory->getPrenom_user()." ".$projectStageHistory->getNom_user()."</td>";
 
-                                        </div>
-
-                                        <div id="preciseClientInfo_suite" class="col-xxl-6">
-                                            <p class="mb-1">
-                                                <strong>Adresse mail client</strong>
-                                            </p>
-                                            <p>
-                                                <?php
-                                                foreach($infosClients as $infosClient) {
-                                                    echo $infosClient->getAdresse_mail_client();
-                                                }?>
-                                            </p>
-
-                                        </div>
-                                    </div>
+                                            echo "</tr>";
+                                        }?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

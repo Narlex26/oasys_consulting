@@ -21,8 +21,8 @@ class projetSERVICE {
         return $this->projetDAO->getProject();
     }
 
-    public function getProjectById() { // Fonction pour aller chercher tous les clients dans la BDD
-        return $this->projetDAO->getProjectById();
+    public function getProjectById($project_number) { // Fonction pour aller chercher tous les clients dans la BDD
+        return $this->projetDAO->getProjectById($project_number);
     }
 
     public function getCurrentProject() {

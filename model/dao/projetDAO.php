@@ -1,6 +1,5 @@
 <?php
 namespace model\dao;
-use model\metier\clientMETIER;
 use model\metier\projetMETIER;
 
 date_default_timezone_set('Europe/Paris');
@@ -42,10 +41,10 @@ class projetDAO
         return projetMETIER::fromFetchAllData($getProject->fetchAll());
     }
 
-    public function getProjectById() // Cherche le projet choisi a afficher
+    public function getProjectById($project_number) // Cherche le projet choisi a afficher
     {
         $getProjectById = $this->Connection->prepare("SELECT projet.code_projet, projet.libelle_projet, projet.date_de_debut_projet, projet.date_de_fin_projet, projet.id_client, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.code_projet = :id_projet");
-        $getProjectById->bindParam(':id_projet', $_GET['project_number']);
+        $getProjectById->bindParam(':id_projet', $project_number);
         $getProjectById->execute();
         return projetMETIER::fromFetchAllData($getProjectById->fetchAll());
     }

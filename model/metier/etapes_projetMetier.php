@@ -4,95 +4,44 @@ namespace model\metier;
 
 class etapes_projetMetier
 {
-    private $id_historique_etape_projet;
     private $id_etape_projet;
-    private $commentaire_etape_projet;
-    private $date_etape_projet;
-    private $id_user;
+    private $libelle_etape_projet;
 
     // Setters
-    public function setCode_projet($code_projet) : void {
-        $this->code_projet = $code_projet;
+    public function setId_etape_projet($id_etape_projet) : void {
+        $this->id_etape_projet = $id_etape_projet;
     }
-    public function setLibelle_projet($libelle_projet) : void {
-        $this->libelle_projet = $libelle_projet;
+    public function setLibelle_etape_projet($libelle_etape_projet) : void {
+        $this->libelle_etape_projet = $libelle_etape_projet;
     }
-    public function setDate_de_debut_projet($date_de_debut_projet) : void {
-        $this->date_de_debut_projet = $date_de_debut_projet;
-    }
-    public function setDate_de_fin_projet($date_de_fin_projet) : void {
-        $this->date_de_fin_projet = $date_de_fin_projet;
-    }
-    public function setId_client($id_client) : void {
-        $this->id_client = $id_client;
-    }
-    public function setPrenom_client($prenom_client) : void {
-        $this->prenom_client = $prenom_client;
-    }
-    public function setNom_client($nom_client) : void {
-        $this->nom_client = $nom_client;
-    }
-    public function setPrenom_gestionnaire_projet($prenom_gestionnaire_projet) : void {
-        $this->prenom_gestionnaire_projet = $prenom_gestionnaire_projet;
-    }
-    public function setNom_gestionnaire_projet($nom_gestionnaire_projet) : void {
-        $this->nom_gestionnaire_projet = $nom_gestionnaire_projet;
-    }
+
 
     // Getters
-    public function getCode_projet() {
-        return $this->code_projet;
+    public function getId_etape_projet() {
+        return $this->id_etape_projet;
     }
-    public function getLibelle_projet() {
-        return $this->libelle_projet;
-    }
-    public function getDate_de_debut_projet() {
-        return $this->date_de_debut_projet;
-    }
-    public function getDate_de_fin_projet() {
-        return $this->date_de_fin_projet;
-    }
-    public function getId_client() {
-        return $this->id_client;
-    }
-    public function getPrenom_client() {
-        return $this->prenom_client;
-    }
-    public function getNom_client() {
-        return $this->nom_client;
-    }
-    public function getPrenom_gestionnaire_projet() {
-        return $this->prenom_gestionnaire_projet;
-    }
-    public function getNom_gestionnaire_projet() {
-        return $this->nom_gestionnaire_projet;
+    public function getLibelle_etape_projet() {
+        return $this->libelle_etape_projet;
     }
 
-    public static function fromFetchData ($data) : projetMETIER {
-        $project = new projetMETIER();
-        $project->setCode_projet($data["code_projet"]);
-        $project->setLibelle_projet($data["libelle_projet"]);
-        $project->setDate_de_debut_projet($data["date_de_debut_projet"]);
-        $project->setDate_de_fin_projet($data["date_de_fin_projet"]);
-        $project->setId_client($data["id_client"]);
-        $project->setPrenom_client($data["prenom_client"]);
-        $project->setNom_client($data["nom_client"]);
-        $project->setPrenom_gestionnaire_projet($data["prenom_user"]);
-        $project->setNom_gestionnaire_projet($data["nom_user"]);
+    public static function fromFetchData ($data) : etapes_projetMetier {
+        $project_stage = new etapes_projetMetier();
+        $project_stage->setId_etape_projet($data["id_etapes_projet"]);
+        $project_stage->setLibelle_etape_projet($data["libelle_etape_projet"]);
 
-        return $project;
+        return $project_stage;
     }
 
     /**
-     * Return a list of users from pdo fetch all
-     * @return array|projetMETIER[]
+     * Return a list of Project Stage from pdo fetch all
+     * @return array|etapes_projetMetier[]
      */
     public static function  fromFetchAllData($data) : array
     {
-        $tab_project = [];
+        $tab_project_stage = [];
         foreach ($data as $line)
-            $tab_project[] = projetMETIER::fromFetchData($line);
+            $tab_project_stage[] = etapes_projetMetier::fromFetchData($line);
 
-        return $tab_project;
+        return $tab_project_stage;
     }
 }

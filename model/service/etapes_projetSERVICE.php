@@ -15,7 +15,7 @@ class etapes_projetSERVICE
         }
     }
 
-    public function create_project_stage($id_etape_projet,$commentaire_etape_projet,$id_user) {
-        return $this->etapes_projetDAO->createProjectStage($id_etape_projet,$commentaire_etape_projet,$id_user);
+    public function get_projet_stage() { // Fonction pour aller chercher tous les étapes de projet dans la BDD
+        return $this->etapes_projetDAO->get_projet_stage();
     }
 }
