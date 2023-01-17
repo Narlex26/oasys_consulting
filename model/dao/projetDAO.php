@@ -51,7 +51,7 @@ class projetDAO
 
     public function getCurrentProject()
     {
-       $getCurrentProject =  $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.id_user = :id_user AND date_de_fin_projet IS NULL");
+       $getCurrentProject =  $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, projet.id_client, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.id_user = :id_user AND date_de_fin_projet IS NULL");
        $getCurrentProject->bindParam(':id_user', $_SESSION['id']);
        $getCurrentProject->execute();
         return projetMETIER::fromFetchAllData($getCurrentProject->fetchAll());
@@ -59,7 +59,7 @@ class projetDAO
 
     public function getFinishProject()
     {
-        $getFinishProject =  $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.id_user = :id_user  AND date_de_fin_projet IS NOT NULL");
+        $getFinishProject =  $this->Connection->prepare("SELECT projet.code_projet, libelle_projet, date_de_debut_projet, date_de_fin_projet, projet.id_client, client.nom_client, client.prenom_client, user.nom_user, user.prenom_user FROM projet, client, user WHERE projet.id_client = client.id_client AND projet.id_user = user.id_user AND projet.id_user = :id_user  AND date_de_fin_projet IS NOT NULL");
         $getFinishProject->bindParam(':id_user', $_SESSION['id']);
         $getFinishProject->execute();
         return projetMETIER::fromFetchAllData($getFinishProject->fetchAll());
