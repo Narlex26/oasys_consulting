@@ -79,8 +79,8 @@
                             <label for="exampleFormControlSelect1">Utilisateur lié au projet</label>
                             <select name="id_user" class="form-control" id="exampleFormControlSelect1" href="">
                                 <?php
-                                foreach($listUsers as $user) {
-                                    echo "<option value='".$user->getId_user()."'>".$user->getPrenom_user()." ".$user->getNom_user()."</option>";
+                                foreach($listChefDeProjet as $chefdeprojet) {
+                                    echo "<option value='".$chefdeprojet->getId_user()."'>".$chefdeprojet->getPrenom_user()." ".$chefdeprojet->getNom_user()." - ".$chefdeprojet->getRole()."</option>";
                                 }
                                 ?>
                             </select>

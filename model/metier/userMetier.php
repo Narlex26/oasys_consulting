@@ -1,13 +1,13 @@
 <?php
-namespace model\metier;
+namespace model\MEtier;
 
-class userMETIER {
+class userMetier {
     private $id_user;
     private $adresse_mail_user;
     private $password_user;
     private $nom_user;
     private $prenom_user;
-    private $type_user;
+    private $role;
 
 
 
@@ -24,8 +24,8 @@ class userMETIER {
     public function setPrenom_user($prenom_user) : void {
         $this->prenom_user = $prenom_user;
     }
-    public function setRole_user($type_user) : void {
-        $this->type_user = $type_user;
+    public function setRole($role) : void {
+        $this->role = $role;
     }
 
     // Getters
@@ -41,32 +41,32 @@ class userMETIER {
     public function getPrenom_user() {
         return $this->prenom_user;
     }
-    public function getRole_user() {
-        return $this->type_user;
+    public function getRole() {
+        return $this->role;
     }
 
 
 
-    public static function fromFetchData ($data) : userMETIER {
-        $user = new userMETIER();
+    public static function fromFetchData ($data) : userMetier {
+        $user = new userMetier();
         $user->setID_user($data["id_user"]);
         $user->setAdresse_mail_user($data["adresse_mail_user"]);
         $user->setNom_user($data["nom_user"]);
         $user->setPrenom_user($data["prenom_user"]);
-        $user->setRole_user($data["role_user"]);
+        $user->setRole($data["libelle_role"]);
 
         return $user;
     }
 
     /**
      * Return a list of users from pdo fetch all
-     * @return array|userMETIER[]
+     * @return array|userMetier[]
      */
     public static function  fromFetchAllData($data) : array
     {
         $tab_user = [];
         foreach ($data as $line)
-            $tab_user[] = userMETIER::fromFetchData($line);
+            $tab_user[] = userMetier::fromFetchData($line);
 
         return $tab_user;
     }

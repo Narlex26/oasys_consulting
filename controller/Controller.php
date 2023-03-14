@@ -35,7 +35,7 @@ abstract class Controller
             "email" => $_SESSION['email'],
             "nom" => $_SESSION['nom'],
             "prenom" => $_SESSION['prenom'],
-            "type" => $_SESSION['type'],
+            "role" => $_SESSION['role'],
             ] : [];
     }
 

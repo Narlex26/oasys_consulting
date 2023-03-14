@@ -1,7 +1,7 @@
 <?php
 namespace model\dao;
-use model\metier\clientMETIER;
-use model\metier\userMETIER;
+use model\Metier\clientMetier;
+use model\Metier\userMetier;
 
 date_default_timezone_set('Europe/Paris');
 
@@ -22,19 +22,26 @@ class userDAO {
 
     public function connUser($adresse_mail_user,$password_user)
     { // Connecte un utilisateur
-        $connUser = $this->Connection->prepare("SELECT * FROM `user` WHERE :adresse_mail_user = user.adresse_mail_user and :password_user = user.password_user LIMIT 1");
+        $connUser = $this->Connection->prepare("SELECT * FROM user, role WHERE :adresse_mail_user = user.adresse_mail_user and :password_user = user.password_user and user.id_role = role.id_role LIMIT 1");
         $connUser->execute(array(
             ':adresse_mail_user' => $adresse_mail_user,
             ':password_user' => hash('sha256', $password_user)
         ));
-        return userMETIER::fromFetchData($connUser->fetch());
+        return userMetier::fromFetchData($connUser->fetch());
     }
 
     public function getUser()
     { // Retourne tous les utilisateurs
-        $getUser = $this->Connection->prepare("SELECT * FROM `user`");
+        $getUser = $this->Connection->prepare("SELECT user.id_user, user.adresse_mail_user, user.nom_user, user.prenom_user, role.libelle_role FROM user, role WHERE role.id_role = user.id_role");
         $getUser->execute();
-        return userMETIER::fromFetchAllData($getUser->fetchAll());
+        return userMetier::fromFetchAllData($getUser->fetchAll());
+    }
+
+    public function getChefDeProjet()
+    { // Retourne tous les utilisateurs
+        $getChefDeProjet = $this->Connection->prepare("SELECT * FROM user, role WHERE role.id_role = 4 AND user.id_role = role.id_role");
+        $getChefDeProjet->execute();
+        return userMetier::fromFetchAllData($getChefDeProjet->fetchAll());
     }
 }
 ?>

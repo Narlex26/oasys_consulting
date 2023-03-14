@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 08 déc. 2022 à 17:36
+-- Généré le : ven. 17 fév. 2023 à 12:56
 -- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.1.12
+-- Version de PHP : 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `client` (
   `id_client` int(11) NOT NULL,
   `adresse_mail_client` varchar(255) NOT NULL,
-  `password_client` varchar(255) NOT NULL,
   `nom_client` varchar(50) DEFAULT NULL,
   `prenom_client` varchar(50) DEFAULT NULL,
   `nom_entreprise_client` varchar(255) NOT NULL
@@ -40,9 +39,10 @@ CREATE TABLE `client` (
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`id_client`, `adresse_mail_client`, `password_client`, `nom_client`, `prenom_client`, `nom_entreprise_client`) VALUES
-(5, 'test@test.com', '', 'test', 'test', 'test'),
-(6, 'gaetan.mass@bergerlevraud.com', '', 'Mass', 'Gaetan', 'Berger Levraud');
+INSERT INTO `client` (`id_client`, `adresse_mail_client`, `nom_client`, `prenom_client`, `nom_entreprise_client`) VALUES
+(5, 'test@test.com', 'test', 'test', 'test'),
+(6, 'gaetan.mass@bergerlevraud.com', 'Mass', 'Gaetan', 'Berger Levraud'),
+(7, 'fedou.gab@gmail.Com', 'Fedou', 'Gabriel', 'Gabriel Fedou Corp');
 
 -- --------------------------------------------------------
 
@@ -52,9 +52,19 @@ INSERT INTO `client` (`id_client`, `adresse_mail_client`, `password_client`, `no
 
 CREATE TABLE `etapes_projet` (
   `id_etapes_projet` int(11) NOT NULL,
-  `libelle_etape_projet` varchar(50) NOT NULL,
-  `code_projet` int(11) NOT NULL
+  `libelle_etape_projet` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `etapes_projet`
+--
+
+INSERT INTO `etapes_projet` (`id_etapes_projet`, `libelle_etape_projet`) VALUES
+(1, 'Initiation'),
+(2, 'Planification'),
+(3, 'Exécution'),
+(4, 'Contrôle'),
+(5, 'Fermeture');
 
 -- --------------------------------------------------------
 
@@ -66,6 +76,44 @@ CREATE TABLE `facturation` (
   `id_facturation` int(11) NOT NULL,
   `montant_facturation` decimal(19,4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `historique_etapes_projet`
+--
+
+CREATE TABLE `historique_etapes_projet` (
+  `id_historique_etapes_projet` int(11) NOT NULL,
+  `id_etape_projet` int(11) NOT NULL,
+  `commentaire_etape_projet` varchar(255) NOT NULL,
+  `date_add` datetime NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `code_projet` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `historique_etapes_projet`
+--
+
+INSERT INTO `historique_etapes_projet` (`id_historique_etapes_projet`, `id_etape_projet`, `commentaire_etape_projet`, `date_add`, `id_user`, `code_projet`) VALUES
+(22, 1, 'Début du projet', '2023-01-13 02:51:49', 2, 1),
+(24, 2, 'Etape 2', '2023-01-13 02:53:23', 1, 1),
+(25, 3, 'implémentation BDD', '2023-01-13 02:54:49', 1, 1),
+(26, 4, 'Premier tests des fonctionnalités avec le client', '2023-01-16 09:53:45', 3, 1),
+(27, 1, 'Mise en place du cahier des charges', '2023-01-16 09:57:58', 2, 3),
+(28, 2, 'Premier rendu du MCD', '2023-01-16 09:58:25', 1, 3),
+(29, 1, 'Mise en place du cahier des charges avec le client', '2023-01-16 09:59:10', 3, 5),
+(30, 3, 'Développement des fonctionnalités de base', '2023-01-16 10:01:56', 1, 3),
+(31, 4, 'Présentation du premier rendu avec le client pour validation', '2023-01-16 10:02:33', 2, 3),
+(32, 4, 'Validation des fonctionnalités par le client', '2023-01-16 10:02:51', 2, 3),
+(33, 3, 'Deuxième Sprint pour le développement des fonctionnalités secondaire et du front end ', '2023-01-16 10:03:43', 1, 3),
+(34, 4, 'Action de contrôle par le Scrum Master avant le rendu de projet final au client', '2023-01-16 10:04:47', 3, 3),
+(35, 5, 'Rendu de projet final au client', '2023-01-16 10:05:28', 3, 3),
+(36, 1, 'sdfghj', '2023-01-19 18:14:45', 3, 1),
+(37, 1, 'sdfg', '2023-01-19 18:14:55', 3, 1),
+(38, 3, 'sdfghj', '2023-01-19 18:16:11', 2, 4),
+(39, 1, 'zertyu', '2023-01-19 18:34:23', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -125,7 +173,10 @@ CREATE TABLE `projet` (
 INSERT INTO `projet` (`code_projet`, `libelle_projet`, `date_de_debut_projet`, `date_de_fin_projet`, `id_client`, `id_user`) VALUES
 (1, 'Projet 1', '2022-12-05', NULL, 6, 1),
 (2, 'Projet 2', '2022-11-14', NULL, 5, 2),
-(3, 'Projet 3', '2022-12-04', '2022-12-06', 5, 1);
+(3, 'Projet 3', '2022-12-04', '2022-12-06', 5, 1),
+(4, 'Projet 4', '2022-12-13', NULL, 5, 1),
+(5, 'Site web CEO of the world', '2022-12-16', NULL, 7, 1),
+(6, 'fghh', '2023-01-12', NULL, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -165,14 +216,22 @@ ALTER TABLE `client`
 -- Index pour la table `etapes_projet`
 --
 ALTER TABLE `etapes_projet`
-  ADD PRIMARY KEY (`id_etapes_projet`),
-  ADD KEY `code_projet` (`code_projet`);
+  ADD PRIMARY KEY (`id_etapes_projet`);
 
 --
 -- Index pour la table `facturation`
 --
 ALTER TABLE `facturation`
   ADD PRIMARY KEY (`id_facturation`);
+
+--
+-- Index pour la table `historique_etapes_projet`
+--
+ALTER TABLE `historique_etapes_projet`
+  ADD PRIMARY KEY (`id_historique_etapes_projet`),
+  ADD KEY `code_projet` (`code_projet`),
+  ADD KEY `id_etape_projet` (`id_etape_projet`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Index pour la table `intervenant`
@@ -217,19 +276,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `etapes_projet`
 --
 ALTER TABLE `etapes_projet`
-  MODIFY `id_etapes_projet` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_etapes_projet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `facturation`
 --
 ALTER TABLE `facturation`
   MODIFY `id_facturation` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `historique_etapes_projet`
+--
+ALTER TABLE `historique_etapes_projet`
+  MODIFY `id_historique_etapes_projet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `intervenant`
@@ -247,7 +312,7 @@ ALTER TABLE `intervention`
 -- AUTO_INCREMENT pour la table `projet`
 --
 ALTER TABLE `projet`
-  MODIFY `code_projet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `code_projet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `user`
@@ -260,10 +325,12 @@ ALTER TABLE `user`
 --
 
 --
--- Contraintes pour la table `etapes_projet`
+-- Contraintes pour la table `historique_etapes_projet`
 --
-ALTER TABLE `etapes_projet`
-  ADD CONSTRAINT `etapes_projet_ibfk_1` FOREIGN KEY (`code_projet`) REFERENCES `projet` (`code_projet`);
+ALTER TABLE `historique_etapes_projet`
+  ADD CONSTRAINT `code_projet` FOREIGN KEY (`code_projet`) REFERENCES `projet` (`code_projet`),
+  ADD CONSTRAINT `historique_etapes_projet_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `id_etape_projet` FOREIGN KEY (`id_etape_projet`) REFERENCES `etapes_projet` (`id_etapes_projet`);
 
 --
 -- Contraintes pour la table `intervention`

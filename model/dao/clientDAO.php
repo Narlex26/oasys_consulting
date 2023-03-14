@@ -1,6 +1,6 @@
 <?php
 namespace model\dao;
-use model\metier\clientMetier;
+use model\Metier\clientMetier;
 
 date_default_timezone_set('Europe/Paris');
 
@@ -39,7 +39,7 @@ class clientDAO {
     {
         $getClient = $this->Connection->prepare("SELECT * FROM `client`");
         $getClient->execute();
-        return clientMETIER::fromFetchAllData($getClient->fetchAll());
+        return clientMetier::fromFetchAllData($getClient->fetchAll());
     }
 
     public function getClientByProjectId($project_number)
@@ -47,7 +47,7 @@ class clientDAO {
         $getClientByProjectId = $this->Connection->prepare("SELECT client.id_client, client.adresse_mail_client, client.nom_client, client.prenom_client, client.nom_entreprise_client FROM projet, client WHERE projet.id_client = client.id_client AND projet.code_projet = :id_projet");
         $getClientByProjectId->bindParam(':id_projet', $project_number);
         $getClientByProjectId->execute();
-        return clientMETIER::fromFetchAllData($getClientByProjectId->fetchAll());
+        return clientMetier::fromFetchAllData($getClientByProjectId->fetchAll());
     }
 
     public function getNumbersOfClient() // Affiche le nombre de client total

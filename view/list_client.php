@@ -60,6 +60,7 @@
                             <th scope="col">Prénom</th>
                             <th scope="col">Nom de famille</th>
                             <th scope="col">Entreprise</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,6 +72,7 @@
                                     echo "<td>".$client->getNom_client()."</td>";
                                     echo "<td>".$client->getPrenom_client()."</td>";
                                     echo "<td>".$client->getNom_entreprise_client()."</td>";
+                                    echo "<td><a style='color: black;' class='btn-sm btn-info' href='../controller/Route.php?action=".$client->getId_client()."'>Modifier informations <svg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 20H20.5M18 10L21 7L17 3L14 6M18 10L8 20H4V16L14 6M18 10L14 6' stroke='#000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg></a></td>";
                                 echo "</tr>";
                             }
                             ?>

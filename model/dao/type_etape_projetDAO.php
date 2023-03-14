@@ -1,11 +1,11 @@
 <?php
 namespace model\dao;
-use model\metier\etapes_projetMetier;
+use model\Metier\type_etape_projetMetier;
 
 date_default_timezone_set('Europe/Paris');
-class etapes_projetDAO
+class type_etape_projetDAO
 {
-    private const TABLE = "etapes_projet";
+    private const TABLE = "etape_projet";
     private $Connection;
 
     public function __construct()
@@ -20,8 +20,8 @@ class etapes_projetDAO
 
     public function get_projet_stage()
     {
-        $get_projet_stage = $this->Connection->prepare("SELECT * FROM etapes_projet");
+        $get_projet_stage = $this->Connection->prepare("SELECT * FROM type_etape_projet");
         $get_projet_stage->execute();
-        return etapes_projetMetier::fromFetchAllData($get_projet_stage->fetchAll());
+        return type_etape_projetMetier::fromFetchAllData($get_projet_stage->fetchAll());
     }
 }

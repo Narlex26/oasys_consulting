@@ -21,5 +21,9 @@ class userSERVICE {
         return $this->userDAO->getUser();
     }
 
+    public function getChefDeProjet() { // Fonction pour aller chercher tous les users qui sont chef de projet dans la BDD
+        return $this->userDAO->getChefDeProjet();
+    }
+
 
 }

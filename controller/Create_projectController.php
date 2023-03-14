@@ -11,7 +11,7 @@ class Create_projectController extends Controller
 
         $vars = [
             "listClients" => $clientSERVICE->getClient(),
-            "listUsers" => $userSERVICE->getUser(),
+            "listChefDeProjet" => $userSERVICE->getChefDeProjet(),
             "resultNotification" => false
         ];
 

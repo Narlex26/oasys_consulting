@@ -1,7 +1,7 @@
 <?php
-namespace model\metier;
+namespace model\Metier;
 
-class projetMETIER {
+class projetMetier {
     private $code_projet;
     private $libelle_projet;
     private $date_de_debut_projet;
@@ -70,8 +70,8 @@ class projetMETIER {
         return $this->nom_gestionnaire_projet;
     }
 
-    public static function fromFetchData ($data) : projetMETIER {
-        $project = new projetMETIER();
+    public static function fromFetchData ($data) : projetMetier {
+        $project = new projetMetier();
         $project->setCode_projet($data["code_projet"]);
         $project->setLibelle_projet($data["libelle_projet"]);
         $project->setDate_de_debut_projet($data["date_de_debut_projet"]);
@@ -87,13 +87,13 @@ class projetMETIER {
 
     /**
      * Return a list of users from pdo fetch all
-     * @return array|projetMETIER[]
+     * @return array|projetMetier[]
      */
     public static function  fromFetchAllData($data) : array
     {
         $tab_project = [];
         foreach ($data as $line)
-            $tab_project[] = projetMETIER::fromFetchData($line);
+            $tab_project[] = projetMetier::fromFetchData($line);
 
         return $tab_project;
     }

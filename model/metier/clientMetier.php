@@ -1,7 +1,7 @@
 <?php
-namespace model\metier;
+namespace model\Metier;
 
-class clientMETIER {
+class clientMetier {
     private $adresse_mail_client;
     private $nom_client;
     private $prenom_client;
@@ -41,8 +41,8 @@ class clientMETIER {
         return $this->nom_entreprise_client;
     }
 
-    public static function fromFetchData ($data) : clientMETIER {
-        $client = new clientMETIER();
+    public static function fromFetchData ($data) : clientMetier {
+        $client = new clientMetier();
         $client->setId_client($data["id_client"]);
         $client->setAdresse_mail_client($data["adresse_mail_client"]);
         $client->setNom_client($data["nom_client"]);
@@ -54,13 +54,13 @@ class clientMETIER {
 
     /**
      * Return a list of users from pdo fetch all
-     * @return array|clientMETIER[]
+     * @return array|clientMetier[]
      */
     public static function  fromFetchAllData($data) : array
     {
         $tab_client = [];
         foreach ($data as $line)
-            $tab_client[] = clientMETIER::fromFetchData($line);
+            $tab_client[] = clientMetier::fromFetchData($line);
 
         return $tab_client;
     }

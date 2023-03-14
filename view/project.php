@@ -194,10 +194,10 @@
 
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput1">Etapes du projet</label>
-                                                                <select name="id_etape_projet" class="form-control" id="exampleFormControlSelect1" href="">
+                                                                <select name="id_type_etape_projet" class="form-control" id="exampleFormControlSelect1" href="">
                                                                     <?php
-                                                                    foreach($listProjectStage as $projectStage) {
-                                                                        echo "<option value='".$projectStage->getId_etape_projet()."'>".$projectStage->getLibelle_etape_projet()."</option>";
+                                                                    foreach($listProjectStageType as $projectStageType) {
+                                                                        echo "<option value='".$projectStageType->getId_etape_projet()."'>".$projectStageType->getLibelle_etape_projet()."</option>";
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -210,7 +210,7 @@
 
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlSelect1">Intervenant sur l'étapes de projet</label>
-                                                                <select name="id_user" class="form-control" id="exampleFormControlSelect1" href="">
+                                                                <select name="id_user[]" class="form-control" id="exampleFormControlSelect1" href="" multiple>
                                                                     <?php
                                                                     foreach($listUsers as $user) {
                                                                         echo "<option value='".$user->getId_user()."'>".$user->getPrenom_user()." ".$user->getNom_user()."</option>";
@@ -235,18 +235,19 @@
                                             <th scope="col">Libelle</th>
                                             <th scope="col">Commentaire</th>
                                             <th scope="col">Date d'ajout</th>
+                                            <th scope="col">Date de fin</th>
                                             <th scope="col">En charge de l'étape</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-                                        foreach($listProjectStageHistory as $projectStageHistory) {
+                                        foreach($listProjectStage as $projectStage) {
                                             echo "<tr>";
-                                                echo "<td>".$projectStageHistory->getLibelle_etape_projet()."</td>";
-                                                echo "<td>".$projectStageHistory->getCommentaire_etape_projet()."</td>";
-                                                echo "<td>".$projectStageHistory->getDate_etape_projet()."</td>";
-                                                echo "<td>".$projectStageHistory->getPrenom_user()." ".$projectStageHistory->getNom_user()."</td>";
-
+                                                echo "<td>".$projectStage->getLibelle_etape_projet()."</td>";
+                                                echo "<td>".$projectStage->getCommentaire_etape_projet()."</td>";
+                                                echo "<td>".$projectStage->getDate_add_etape_projet()."</td>";
+                                                echo "<td>".$projectStage->getDate_end_etape_projet()."</td>";
+                                                echo "<td>".$projectStage->getPrenom_Nom_user()."</td>";
                                             echo "</tr>";
                                         }?>
                                         </tbody>

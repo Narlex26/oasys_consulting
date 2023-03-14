@@ -2,7 +2,7 @@
 
 namespace controller;
 
-use model\metier\userMETIER;
+use model\metier\userMetier;
 
 class List_current_projectController extends Controller
 {

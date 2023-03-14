@@ -2,7 +2,7 @@
 
 namespace controller;
 
-use model\metier\userMETIER;
+use model\metier\userMetier;
 
 class LoginController extends Controller
 {
@@ -37,7 +37,7 @@ class LoginController extends Controller
         }
     }
 
-    public function initSessionUserVars(userMETIER $user = null) {
+    public function initSessionUserVars(userMetier $user = null) {
         $is_auth = $user != null && $user->getId_user() > 0;
         $_SESSION['auth_state'] = $is_auth;
 
@@ -47,7 +47,7 @@ class LoginController extends Controller
             $_SESSION['email'] = $user->getAdresse_mail_user();
             $_SESSION['nom'] = $user->getNom_user();
             $_SESSION['prenom'] = $user->getPrenom_user();
-            $_SESSION['type'] = $user->getRole_user();
+            $_SESSION['role'] = $user->getRole();
         }
     }
 }
