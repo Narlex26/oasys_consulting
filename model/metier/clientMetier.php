@@ -1,7 +1,9 @@
 <?php
 namespace model\Metier;
 
-class clientMetier {
+use stdClass;
+
+class clientMetier extends stdClass {
     private $adresse_mail_client;
     private $nom_client;
     private $prenom_client;

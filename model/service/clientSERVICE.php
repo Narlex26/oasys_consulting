@@ -29,6 +29,10 @@ class clientSERVICE {
         return $this->clientDAO->createClient($adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client);
     }
 
+    public function modifyClient($id_client,$adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client) { // Fonction pour aller créer un client
+        return $this->clientDAO->modifyClient($id_client,$adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client);
+    }
+
     public function getNumbersOfClient() { // Affiche le nombre de client total
         return $this->clientDAO->getNumbersOfClient();
     }

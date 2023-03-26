@@ -47,6 +47,7 @@
                 $controllerName = \controller\List_finish_projectController::class;
                 break;
 
+            case "modify_client":
             case "list_client":
                 $controllerName = \controller\List_clientController::class;
                 break;

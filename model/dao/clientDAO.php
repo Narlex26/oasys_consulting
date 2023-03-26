@@ -35,6 +35,19 @@ class clientDAO {
         return $res;
     }
 
+    public function modifyClient($id_client,$adresse_mail_client,$nom_client,$prenom_client,$nom_entreprise_client) { // Crée un client
+        $modifyclient = $this->Connection->prepare("UPDATE ".self::TABLE." SET adresse_mail_client=:adresse_mail_client, nom_client=:nom_client, prenom_client=:prenom_client, nom_entreprise_client=:nom_entreprise_client WHERE id_client=:id_client");
+        $res = $modifyclient->execute(array(
+            "id_client" => $id_client,
+            "adresse_mail_client"=>$adresse_mail_client,
+            "nom_client"=>$nom_client,
+            "prenom_client"=>$prenom_client,
+            "nom_entreprise_client"=>$nom_entreprise_client
+        ));
+
+        return $res;
+    }
+
     public function getClient() // Cherche tous les clients pour les afficher lors d'une crétion de projet
     {
         $getClient = $this->Connection->prepare("SELECT * FROM `client`");
