@@ -11,7 +11,7 @@
   </component>
   <component name="PhpProjectServersManager">
     <servers>
-      <server host="localhost" id="e21ed9c7-57f6-4b80-832d-22c93abb67b4" name="Xamp" use_path_mappings="true">
+      <server host="localhost" id="e21ed9c7-57f6-4b80-832d-22c93abb67b4" name="Xampp" use_path_mappings="true">
         <path_mappings>
           <mapping local-root="$PROJECT_DIR$" remote-root="C:/xampp/htdocs/oasys_consulting" />
         </path_mappings>
