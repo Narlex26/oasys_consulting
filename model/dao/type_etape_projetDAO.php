@@ -1,6 +1,6 @@
 <?php
 namespace model\dao;
-use model\Metier\type_etape_projetMetier;
+use model\metier\type_etape_projetMetier;
 
 date_default_timezone_set('Europe/Paris');
 class type_etape_projetDAO

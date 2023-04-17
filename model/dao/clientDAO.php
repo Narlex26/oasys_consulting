@@ -1,6 +1,6 @@
 <?php
 namespace model\dao;
-use model\Metier\clientMetier;
+use model\metier\clientMetier;
 
 date_default_timezone_set('Europe/Paris');
 

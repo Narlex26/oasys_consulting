@@ -1,7 +1,7 @@
 <?php
 namespace model\dao;
 
-use model\Metier\userMetier;
+use model\metier\userMetier;
 use PDO;
 
 date_default_timezone_set('Europe/Paris');
