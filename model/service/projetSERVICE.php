@@ -17,11 +17,11 @@ class projetSERVICE {
         return $this->projetDAO->createProject($libelle_projet,$date_de_debut_projet,$id_client,$id_user);
     }
 
-    public function getProject() { // Fonction pour aller chercher tous les clients dans la BDD
+    public function getProject() { // Fonction pour aller chercher tous les projets dans la BDD
         return $this->projetDAO->getProject();
     }
 
-    public function getProjectById($project_number) { // Fonction pour aller chercher tous les clients dans la BDD
+    public function getProjectById($project_number) { // Fonction pour aller chercher un projet par ID dans la BDD
         return $this->projetDAO->getProjectById($project_number);
     }
 

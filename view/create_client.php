@@ -77,7 +77,9 @@
                     <button type="submit" class="btn btn-success">Créer le client</button>
 
                 </form>
+
                 <br>
+
                 <?php
                 if ($resultNotification) {?>
                     <div class="alert alert-success" role="alert">

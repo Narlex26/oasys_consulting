@@ -1,6 +1,5 @@
 <?php
-
-namespace model\metier;
+namespace model\Metier;
 
 class etape_projetMetier
 {

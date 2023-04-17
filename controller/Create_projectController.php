@@ -4,7 +4,7 @@ namespace controller;
 
 class Create_projectController extends Controller
 {
-    public function resolve()
+    public function resolve(): void
     {
         $clientSERVICE = new \model\service\clientSERVICE();
         $userSERVICE = new \model\service\userSERVICE();

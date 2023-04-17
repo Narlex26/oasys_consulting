@@ -3,12 +3,13 @@
 namespace controller;
 
 use model\metier\userMetier;
+use model\service\userSERVICE;
 
 class LoginController extends Controller
 {
-    public $needAuth = false;
+    public bool $needAuth = false;
 
-    public function guard()
+    public function guard(): void
     {
         parent::guard();
 
@@ -17,11 +18,11 @@ class LoginController extends Controller
         }
     }
 
-    public function resolve()
+    public function resolve(): void
     {
         if(isset($_POST['adresse_mail_client']) && isset($_POST['password_client'])) {
             try {
-                $userSERVICE = new \model\service\userSERVICE();
+                $userSERVICE = new userSERVICE();
             }
             catch(\Exception $e) {
                 echo "erreur connexion";

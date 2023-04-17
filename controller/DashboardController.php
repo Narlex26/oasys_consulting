@@ -2,12 +2,16 @@
 
 namespace controller;
 
+use model\service\clientSERVICE;
+use model\service\projetSERVICE;
+
 class DashboardController extends Controller
 {
-    public function resolve() {
+    public function resolve(): void
+    {
 
-        $projetSERVICE = new \model\service\projetSERVICE();
-        $clientSERVICE = new \model\service\clientSERVICE();
+        $projetSERVICE = new projetSERVICE();
+        $clientSERVICE = new clientSERVICE();
 
         $vars = [
             "nombreProjets" => $projetSERVICE->getNumbersOfProject(),

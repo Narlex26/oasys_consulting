@@ -1,6 +1,20 @@
 <?php
-    // Prérequis
-    require_once("../autoloader.php");
+
+use controller\AccueilController;
+use controller\Create_clientController;
+use controller\Create_projectController;
+use controller\DashboardController;
+use controller\List_clientController;
+use controller\List_current_projectController;
+use controller\List_finish_projectController;
+use controller\List_projectController;
+use controller\LoginController;
+use controller\ProjectController;
+use controller\UserInfosController;
+use controller\UserSettingsController;
+
+// Prérequis
+require_once("../autoloader.php");
     session_start();
 
     // Débug
@@ -15,47 +29,57 @@
         switch($action) { // Vérification du type d'action
             case "demander_connexion": // L'utilisateur demande la page de connexion
             case "connexion":
-                $controllerName = \controller\LoginController::class;
+                $controllerName = LoginController::class;
                 break;
 
             case "dashboard":
-                $controllerName = \controller\DashboardController::class;
+                $controllerName = DashboardController::class;
+                break;
+
+            case "user_infos":
+                $controllerName = UserInfosController::class;
+                break;
+
+            case "modify_user_infos": // L'utilisateur veut modifier ses infos perso
+            case "modify_user_password": // L'utilisateur veut modifier son mot de passe
+            case "user_settings":
+                $controllerName = UserSettingsController::class;
                 break;
 
             case "create_project_stage":
             case "project":
-                $controllerName = \controller\ProjectController::class;
+                $controllerName = ProjectController::class;
                 break;
 
             case "create_project":
-                $controllerName = \controller\Create_projectController::class;
+                $controllerName = Create_projectController::class;
                 break;
 
             case "create_client":
-                $controllerName = \controller\Create_clientController::class;
+                $controllerName = Create_clientController::class;
                 break;
 
             case "list_project":
-                $controllerName = \controller\List_projectController::class;
+                $controllerName = List_projectController::class;
                 break;
 
             case "list_current_project":
-                $controllerName = \controller\List_current_projectController::class;
+                $controllerName = List_current_projectController::class;
                 break;
 
             case "list_finish_project":
-                $controllerName = \controller\List_finish_projectController::class;
+                $controllerName = List_finish_projectController::class;
                 break;
 
             case "modify_client":
             case "list_client":
-                $controllerName = \controller\List_clientController::class;
+                $controllerName = List_clientController::class;
                 break;
 
             case "logout":
                 session_destroy();
                 unset($_SESSION);
-                $controllerName = \controller\AccueilController::class;
+                $controllerName = AccueilController::class;
                 break;
 
             default :

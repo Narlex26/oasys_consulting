@@ -2,12 +2,13 @@
 
 namespace controller;
 
-use model\metier\userMetier;
+use model\service\projetSERVICE;
 
 class List_finish_projectController extends Controller
 {
-    public function resolve() {
-        $projetSERVICE = new \model\service\projetSERVICE();
+    public function resolve(): void
+    {
+        $projetSERVICE = new projetSERVICE();
 
         $vars = [
             "listFinishProjects" => $projetSERVICE->getFinishProject(),

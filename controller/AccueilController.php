@@ -4,7 +4,8 @@ namespace controller;
 
 class AccueilController extends Controller
 {
-    public function resolve() {
+    public function resolve(): void
+    {
         $this->render("accueil");
     }
 }

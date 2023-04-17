@@ -1,16 +1,15 @@
 <?php
 namespace controller;
 
-use model\dao\Connexion;
-
 abstract class Controller
 {
-    public $needAuth = true;
+    public bool $needAuth = true;
 
-    public function resolve () {
+    public function resolve () : void {
     }
 
-    public function guard () {
+    public function guard (): void
+    {
         if ($this->needAuth && $_SESSION['auth_state'] !== true) {
             $this->redirect("connexion");
         }
@@ -22,7 +21,8 @@ abstract class Controller
 
     }
 
-    public final function redirect(string $action) {
+    public final function redirect(string $action): void
+    {
         header("location:Route.php?action=$action");
         die();
     }

@@ -1,5 +1,5 @@
 <?php
-namespace model\MEtier;
+namespace model\Metier;
 
 class userMetier {
     private $id_user;
@@ -18,6 +18,9 @@ class userMetier {
     public function setAdresse_mail_user($adresse_mail_user) : void {
         $this->adresse_mail_user = $adresse_mail_user;
     }
+    public function setPassword_user($password_user) : void {
+        $this->password_user = $password_user;
+    }
     public function setNom_user($nom_user) : void {
         $this->nom_user = $nom_user;
     }
@@ -35,6 +38,9 @@ class userMetier {
     public function getAdresse_mail_user() {
         return $this->adresse_mail_user;
     }
+    public function getPassword_user() {
+        return $this->password_user;
+    }
     public function getNom_user() {
         return $this->nom_user;
     }
@@ -51,6 +57,7 @@ class userMetier {
         $user = new userMetier();
         $user->setID_user($data["id_user"]);
         $user->setAdresse_mail_user($data["adresse_mail_user"]);
+        $user->setPassword_user($data["password_user"]);
         $user->setNom_user($data["nom_user"]);
         $user->setPrenom_user($data["prenom_user"]);
         $user->setRole($data["libelle_role"]);

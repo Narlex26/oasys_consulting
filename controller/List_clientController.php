@@ -2,17 +2,20 @@
 
 namespace controller;
 
+use model\service\clientSERVICE;
+
 class List_clientController extends Controller
 {
-    public function resolve() {
-        $clientSERVICE = new \model\service\clientSERVICE();
+    public function resolve(): void
+    {
+        $clientSERVICE = new clientSERVICE();
 
         $vars = [
             "listClients" => $clientSERVICE->getClient(),
         ];
 
         if(isset($_POST['id_client']) and isset($_POST['adresse_mail_client']) and isset($_POST['nom_client']) and isset($_POST['prenom_client']) and isset($_POST['nom_entreprise'])) {
-            $clientSERVICE = new \model\service\clientSERVICE();
+            $clientSERVICE = new clientSERVICE();
 
             $clientSERVICE->modifyClient($_POST['id_client'],$_POST['adresse_mail_client'],$_POST['nom_client'],$_POST['prenom_client'],$_POST['nom_entreprise']);
 

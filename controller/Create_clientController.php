@@ -4,7 +4,7 @@ namespace controller;
 
 class Create_clientController extends Controller
 {
-    public function resolve()
+    public function resolve(): void
     {
 
         $vars = [
