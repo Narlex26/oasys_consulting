@@ -2,7 +2,7 @@
 
 namespace model\dao;
 
-use model\Metier\etape_projetMetier;
+use model\metier\etape_projetMetier;
 
 date_default_timezone_set('Europe/Paris');
 class etape_projetDAO
