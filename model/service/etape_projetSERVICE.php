@@ -18,6 +18,10 @@ class etape_projetSERVICE
     public function create_project_stage($project_number, $id_type_etape_projet, $commentaire_etape_projet,$id_user) {
         return $this->etapes_projet_historyDAO->create_project_stage($project_number,$id_type_etape_projet,$commentaire_etape_projet,$id_user);
     }
+
+    public function end_project_stage($id_etape_projet, $date_end_project_stage) {
+        return $this->etapes_projet_historyDAO->end_project_stage($id_etape_projet, $date_end_project_stage);
+    }
     public function getAllProjectStageById($project_number) { // Fonction pour aller chercher tous les étapes de projet dans la BDD
         return $this->etapes_projet_historyDAO->getAllProjectStageById($project_number);
     }

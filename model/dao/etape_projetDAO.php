@@ -49,6 +49,18 @@ class etape_projetDAO
         ));
     }
 
+    public function end_project_stage($id_etape_projet, $date_end_project_stage) {
+
+        // update la date de fin d'une étape de projet
+        $end_project_stage = $this->Connection->prepare("UPDATE etape_projet SET date_end = :date_end_project_stage WHERE id_etape_projet = :id_etape_projet");
+
+        // return true si la requête a été exécutée avec succès, sinon false
+        return $end_project_stage->execute(array(
+            "id_etape_projet" => $id_etape_projet,
+            "date_end_project_stage" => $date_end_project_stage
+        ));
+    }
+
     public function getAllProjectStageById($project_number) {
         $getProjectStageById = $this->Connection->prepare("SELECT etape_projet.id_etape_projet, type_etape_projet.libelle_type_etape_projet, etape_projet.commentaire_etape_projet, etape_projet.date_add, etape_projet.date_end, GROUP_CONCAT(CONCAT_WS(' ', user.prenom_user, user.nom_user)SEPARATOR ' - ') as prenom_nom_user
             FROM etape_projet, type_etape_projet, etape_projet_user, user, projet 

@@ -44,12 +44,29 @@ class ProjectController extends Controller
                     $_POST['commentaire_etape_projet'],
                     $_POST['id_user']
                 );
+
                 // Rediriger vers l'URL de départ
                 header("Location: ../controller/Route.php?action=project&project_number=$projectNumber");
                 exit;
             } catch (Exception $e) {
                 // afficher une erreur ou rediriger vers une page d'erreur
                 die("Impossible de créer l'étape de projet : " . $e->getMessage());
+            }
+        }
+
+        if (isset($_POST['id_etape_projet'], $_POST['date_end_project_stage'])) {
+            try {
+                $etape_projet_SERVICE->end_project_stage(
+                    $_POST['id_etape_projet'],
+                    $_POST['date_end_project_stage']
+                );
+
+                //Rediriger vers l'URL de départ
+                header("Location: ../controller/Route.php?action=project&project_number=$projectNumber");
+                exit;
+            } catch (Exception $e) {
+                // afficher une erreur ou rediriger vers une page d'erreur
+                die("Impossible de finir l'étape de projet : " . $e->getMessage());
             }
         }
 

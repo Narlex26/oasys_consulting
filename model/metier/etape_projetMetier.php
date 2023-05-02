@@ -3,7 +3,7 @@ namespace model\Metier;
 
 class etape_projetMetier
 {
-    private $id_historique_etape_projet;
+    private $id_etape_projet;
     private $libelle_etape_projet;
     private $commentaire_etape_projet;
     private $date_add_etape_projet;
@@ -11,8 +11,8 @@ class etape_projetMetier
     private $prenom_nom_user;
 
     // Setters
-    public function setId_historique_etape_projet($id_historique_etape_projet) : void {
-        $this->id_historique_etape_projet = $id_historique_etape_projet;
+    public function setId_etape_projet($id_etape_projet) : void {
+        $this->id_etape_projet = $id_etape_projet;
     }
     public function setLibelle_etape_projet($libelle_etape_projet) : void {
         $this->libelle_etape_projet = $libelle_etape_projet;
@@ -31,8 +31,8 @@ class etape_projetMetier
     }
 
     // Getters
-    public function getId_historique_etape_projet() {
-        return $this->id_historique_etape_projet;
+    public function getId_etape_projet() {
+        return $this->id_etape_projet;
     }
     public function getLibelle_etape_projet() {
         return $this->libelle_etape_projet;
@@ -52,7 +52,7 @@ class etape_projetMetier
 
     public static function fromFetchData ($data) : etape_projetMetier {
         $project_stage = new etape_projetMetier();
-        $project_stage->setId_historique_etape_projet($data["id_etape_projet"]);
+        $project_stage->setId_etape_projet($data["id_etape_projet"]);
         $project_stage->setLibelle_etape_projet($data["libelle_type_etape_projet"]);
         $project_stage->setCommentaire_etape_projet($data["commentaire_etape_projet"]);
         $project_stage->setDate_add_etape_projet($data["date_add"]);

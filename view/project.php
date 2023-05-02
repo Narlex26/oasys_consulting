@@ -237,8 +237,10 @@
                                             <th scope="col">Date d'ajout</th>
                                             <th scope="col">Date de fin</th>
                                             <th scope="col">En charge de l'étape</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         <?php
                                         foreach($listProjectStage as $projectStage) {
@@ -248,10 +250,55 @@
                                                 echo "<td>".$projectStage->getDate_add_etape_projet()."</td>";
                                                 echo "<td>".$projectStage->getDate_end_etape_projet()."</td>";
                                                 echo "<td>".$projectStage->getPrenom_Nom_user()."</td>";
+                                                if ($projectStage->getDate_end_etape_projet() == null) {
+                                                    echo "<td><a style='color: black; white-space: nowrap;' class='btn-sm btn-success' href='#' data-toggle='modal' data-target='#myModal".$projectStage->getId_etape_projet()."'>Finir l'étape</a></td>";
+                                                } else {
+                                                    echo "<td></td>";
+                                                }
                                             echo "</tr>";
-                                        }?>
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
+
+                                    <!-- Modify date end of project stage Modal -->
+                                    <?php foreach($listProjectStage as $projectStage) { ?>
+                                        <div class='modal fade' id='myModal<?php echo $projectStage->getId_etape_projet(); ?>' tabindex='-1' role='dialog' aria-labelledby='myModalLabel<?php echo $projectStage->getLibelle_etape_projet(); ?>' aria-hidden='true'>
+                                            <div class='modal-dialog'>
+                                                <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <h4 class='modal-title' id='myModalLabel<?php echo $projectStage->getId_etape_projet(); ?>'>Finaliser l'étape de projet</h4>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <form class="client" method="post" action="../controller/Route.php?action=end_project_stage">
+
+                                                        <div class='modal-body'>
+
+                                                            <input type="hidden" name="project_number" value="<?php foreach($infosProjects as $infoProject) { echo $infoProject->getCode_projet(); }?>">
+
+                                                            <input type="hidden" name="id_etape_projet" value="<?php echo $projectStage->getId_etape_projet(); ?>">
+
+                                                            <div class="form-group">
+                                                                <input type="date" name="date_end_project_stage" class="form-control">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class='modal-footer'>
+                                                            <button type='button' class='btn btn-default' data-dismiss='modal'>Fermer</button>
+                                                            <button type="submit" class='btn btn-primary'>Enregistrer</button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <!-- End of modify date end of project stage Modal -->
+
                                 </div>
                             </div>
                         </div>

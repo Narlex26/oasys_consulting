@@ -47,6 +47,7 @@ require_once("../autoloader.php");
                 break;
 
             case "create_project_stage":
+            case "end_project_stage":
             case "project":
                 $controllerName = ProjectController::class;
                 break;
